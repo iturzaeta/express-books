@@ -35,3 +35,38 @@ module.exports.bookDetail = (req, res, next) => {
             );
     }
 };
+
+module.exports.edit = (req, res, next) => {
+    const id = req.params.id;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        next(createError(404));
+    } else {
+        Book.findById(id)
+            .then(
+                book => {
+                    res.render('books/form', { book })
+                }
+            ).catch(
+                error => next(error)
+            );
+    }
+}
+
+module.exports.doEdit = (req, res, next) => {
+    const id = req.params.id;
+    console.log(req.body)
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        next(createError(404));
+    } else {
+        Book.findByIdAndUpdate(id, req.body, { new: true })
+            .then(book => {
+                console.log(book)
+                res.redirect(`/books/${id}`)
+            })
+            .catch(
+                error => next(error)
+            )
+    }
+}

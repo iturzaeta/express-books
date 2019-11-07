@@ -1,4 +1,9 @@
 <h1>Books</h1>
-{{#each books}}
-<p><a href="/books/{{this.id}}">{{this.title}}</a></p>
-{{/each}}
+<div class="row">
+  {{#each books}}
+{{!-- <a><a href="/books/{{this.id}}">{{this.title}}</a></a> --}}
+    <div class="col-6 mb-3">
+      {{>listItem this}}
+    </div>
+  {{/each}}
+</div>
