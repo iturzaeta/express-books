@@ -70,3 +70,36 @@ module.exports.doEdit = (req, res, next) => {
             )
     }
 }
+
+module.exports.create = (req, res, next) => {
+    res.render('books/form', {
+        book: new Book()
+    })
+}
+
+module.exports.doCreate = (req, res, next) => {
+    const { title, author, description, rating } = req.body
+    const book = new Book({ title, author, description, rating })
+
+    book.save()
+        .then(result => {
+            console.log('creation result => ', result)
+            res.redirect(`/books/${result._id}`)
+        })
+        .catch(error => next(error))
+}
+
+module.exports.delete = (req, res, next) => {
+    const id = req.params.id;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        next(createError(404));
+    } else {
+        Book.findByIdAndDelete(id)
+            .then(bookDeleted => {
+                console.log('book deleted => ', bookDeleted)
+                res.redirect('/books')
+            })
+            .catch(error => next(error))
+    }
+}
