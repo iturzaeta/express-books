@@ -70,7 +70,6 @@ module.exports.edit = (req, res, next) => {
 
 module.exports.doEdit = (req, res, next) => {
     const id = req.params.id;
-    console.log(req.body)
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
         next(createError(404));
@@ -83,5 +82,20 @@ module.exports.doEdit = (req, res, next) => {
             .catch(
                 error => next(error)
             )
+    }
+}
+
+module.exports.delete = (req, res, next) => {
+    const id = req.params.id;
+
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        next(createError(404));
+    } else {
+        Book.findByIdAndDelete(id)
+            .then(bookDeleted => {
+                console.log('Book deleted => ', bookDeleted)
+                res.redirect('/books')
+            })
+            .catch(error => next(error))
     }
 }

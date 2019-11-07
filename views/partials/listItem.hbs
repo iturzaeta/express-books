@@ -10,5 +10,8 @@
     <a href="/books/{{this.id}}/edit" class="btn btn-success">
       Edit
     </a>
+    <form class="d-inline" action="/books/{{this.id}}/delete" method="POST">
+      <button class="btn btn-danger">Delete</button>
+    </form>
   </div>
 </div>
