@@ -1,7 +1,7 @@
 <h1>Books</h1>
+<a class="btn btn-success mb-3" href="/books/add">Add a book</a>
 <div class="row">
   {{#each books}}
-{{!-- <a><a href="/books/{{this.id}}">{{this.title}}</a></a> --}}
     <div class="col-6 mb-3">
       {{>listItem this}}
     </div>

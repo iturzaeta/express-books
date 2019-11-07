@@ -19,6 +19,21 @@ module.exports.listBooks = (req, res, next) => {
         );
 };
 
+module.exports.addBook = (req, res, next) => {
+    res.render('books/form', {
+        book: new Book()
+    })
+}
+
+module.exports.doAddBook = (req, res, next) => {
+    console.info('body request => ', req.body)
+    const book = new Book(req.body)
+
+    book.save()
+        .then(() => res.redirect('/books'))
+        .catch(error => next(error));
+}
+
 module.exports.bookDetail = (req, res, next) => {
     const id = req.params.id;
 
@@ -63,7 +78,7 @@ module.exports.doEdit = (req, res, next) => {
         Book.findByIdAndUpdate(id, req.body, { new: true })
             .then(book => {
                 console.log(book)
-                res.redirect(`/books/${id}`)
+                res.redirect('/books')
             })
             .catch(
                 error => next(error)
