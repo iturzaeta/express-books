@@ -3,7 +3,11 @@
     <h5 class="card-title">
       {{this.title}}
     </h5>
-    <p><small>{{this.author}}</small></p>
+    <p class="authors-wrapper">
+      {{#each this.author as |author|}}
+      <small class="author-name">{{ author.name }} {{ author.lastName }}</small>
+      {{/each}}
+    </p>
     <a href="/books/{{this.id}}" class="btn btn-info">
       See details
     </a>

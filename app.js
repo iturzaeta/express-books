@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
+const hbs = require('hbs');
 
 /**
  * Handlebars and Mongoose config
@@ -25,6 +26,10 @@ app.use(express.static(path.join(__dirname, 'public')));
  */
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+const dateHelper = require('./helpers/date');
+const equalsHelper = require('./helpers/equals');
+hbs.registerHelper('date', dateHelper);
+hbs.registerHelper('equals', equalsHelper);
 
 /**
  * Configure routes

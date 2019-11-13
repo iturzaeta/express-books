@@ -1,12 +1,16 @@
 <div class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{ book.title }}</h5>
-        <small>{{ book.author }}</small>
-    </div>
-    <p class="mb-1">{{ book.description }}</p>
-    <p class="mb-1"><strong>Rating:</strong> {{ book.rating }}</p>
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1">{{ book.title }}</h5>
+    <p class="authors-wrapper">
+      {{#each book.author as |author|}}
+      <small class="author-name">{{ author.name }} {{ author.lastName }}</small>
+      {{/each}}
+    </p>
+  </div>
+  <p class="mb-1">{{ book.description }}</p>
+  <p class="mb-1"><strong>Rating:</strong> {{ book.rating }}</p>
 
-    <a href="/books/{{book.id}}/edit" class="btn btn-success">
-      Edit
-    </a>
+  <a href="/books/{{book.id}}/edit" class="btn btn-success">
+    Edit
+  </a>
 </div>

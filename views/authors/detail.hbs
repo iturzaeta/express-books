@@ -1,0 +1,16 @@
+<div class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{ author.name }} {{author.lastName}}</h5>
+        <small>{{#date author.birthday }}{{/date}}</small>
+    </div>
+    <p class="mb-1">
+        <string>Nationality: </string>{{ author.nationality }}
+    </p>
+    <p>
+        <img class="author-img" src="{{author.pictureUrl}}">
+    </p>
+
+    <a href="/authors/{{author.id}}/edit" class="btn btn-success">
+        Edit
+    </a>
+</div>
