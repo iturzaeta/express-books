@@ -1,20 +1,19 @@
 {{#if celebrity.isNew}}
 <h1>Create</h1>
 <form class="p-4 bg-white border" action="/celebrities/add" method="POST">
-    {{else}}
-    <h1>Edit</h1>
-    <form class="p-4 bg-white border" action="/celebrities/{{celebrity.id}}/edit" method="POST">
-        {{/if}}
-        <div class="form-group">
-            <label for="title">Name:</label>
-            <input type="text" class="form-control" name="name" id="name" value="{{celebrity.name}}">
-        </div>
+	{{else}}
+	<h1>Edit</h1>
+	<form class="p-4 bg-white border" action="/celebrities/{{celebrity.id}}/edit" method="POST">
+		{{/if}}
+		<div class="form-group">
+			<label for="title">Name:</label>
+			<input type="text" class="form-control" name="name" id="name" value="{{celebrity.name}}">
+		</div>
 
-        <div class="form-group">
-            <label for="description">Catchphrase:</label>
-            <textarea class="form-control" id="catchPhrase" name="catchPhrase"
-                rows="4">{{celebrity.catchPhrase}}</textarea>
-        </div>
+		<div class="form-group">
+			<label for="description">Catchphrase:</label>
+			<textarea class="form-control" id="catchPhrase" name="catchPhrase" rows="4">{{celebrity.catchPhrase}}</textarea>
+		</div>
 
-        <button type="submit" class="btn btn-success">Submit</button>
-    </form>
+		<button type="submit" class="btn btn-success">Submit</button>
+	</form>
