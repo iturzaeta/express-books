@@ -1,0 +1,12 @@
+<div class="row">
+    {{#each celebrities as |celeb|}}
+    <div class="card col-xs-4" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{celeb.name}} {{celeb.lastName}}</h5>
+            <p class="card-text">{{celeb.catchphrase}}</p>
+            <a href="/celebrities/{{celeb.id}}/edit" class="btn btn-primary">Edit</a>
+            <a href="/celebrities/{{celeb.id}}/delete" class="btn btn-primary">Delete</a>
+        </div>
+    </div>
+    {{/each}}
+</div>
