@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
+const hbs = require('hbs');
 
 /**
  * Handlebars and Mongoose config
@@ -29,7 +30,7 @@ app.set('view engine', 'hbs');
 /**
  * Configure routes
  */
-const router = require('./config/routes.js');
+const router = require('./config/routes');
 app.use('/', router);
 
 // catch 404 and forward to error handler

@@ -1,0 +1,34 @@
+{{!-- <h2>Students</h2>
+<button type="button" class="btn btn-success"><a id="create-btn" href="/students/new">Add New Student</a></button>
+   <div class="list-container">
+       {{#each students as |student|}}
+           <p><a href="/students/{{this.id}}">{{this.fullName}}</a></p>
+       {{/each}}
+   </div> --}}
+
+
+<h1>Students</h1>
+<a href="/students/new" class="btn btn-success mb-3">Add New Student</a>
+<div class="row">
+    {{#each students as |student|}}
+    {{!-- <a><a href="/authors/{{this.id}}">{{this.title}}</a></a> --}}
+    <div class="col-6 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{student.fullName}}
+                </h5>
+                <a href="/students/{{student.id}}" class="btn btn-info">
+                    See details
+                </a>
+                <a href="/students/{{student.id}}/edit" class="btn btn-success">
+                    Edit
+                </a>
+                <form class="d-inline" action="/students/{{student.id}}/delete" method="POST">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>

@@ -1,0 +1,17 @@
+<h2>Student Details</h2>
+
+   <div class="details-container">
+       <div class="details-data"><strong>Name:</strong> {{student.fullName}}</div>
+       <div class="details-data"><strong>Email:</strong> {{student.email}}</div>
+       <div class="details-data"><strong>Username:</strong> {{student.username}}</div>
+       <div class="details-data"><strong>Password:</strong> {{student.password}}</div>
+
+       <a href="/students/{{student.id}}/edit"><button type="button" class="btn btn-success">Edit</button></a>
+
+       <form class="d-inline" action="/students/{{student.id}}/delete" method="POST">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
+
+       <a href="/students"><button type="button" class="btn btn-warning">Back</button></a>
+      
+   </div>

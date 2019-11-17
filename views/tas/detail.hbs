@@ -1,0 +1,15 @@
+<h2>TA Details</h2>
+
+   <div class="details-container">
+       <div class="details-data"><strong>Name:</strong> {{ta.fullName}}</div>
+       
+
+       <a href="/tas/{{ta.id}}/edit"><button type="button" class="btn btn-success">Edit</button></a>
+
+       <form class="d-inline" action="/tas/{{ta.id}}/delete" method="POST">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
+
+       <a href="/tas"><button type="button" class="btn btn-warning">Back</button></a>
+       
+   </div>
